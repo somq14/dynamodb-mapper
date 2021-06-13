@@ -10,12 +10,12 @@ import {
   DynamoDBItem,
   DynamoDBKey,
   DynamoDBKeyType,
-} from "./client";
-import { Optional } from "./common";
+  Optional,
+} from "./common";
 import { marshaller, unmarshaller } from "./marshaller";
 import { ModelMetadata } from "./metadata";
 
-export class DynamoDBMapper<
+export abstract class DynamoDBMapper<
   ModelType extends BaseModel,
   HashKeyType = DynamoDBKeyType,
   RangeKeyType = undefined

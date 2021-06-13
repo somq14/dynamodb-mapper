@@ -1,13 +1,7 @@
 import "reflect-metadata";
-import { BaseModel } from "../dynamodb-mapper/base.model";
-import {
-  HashKey,
-  Model,
-  RangeKey,
-  Attr,
-  Version,
-} from "../dynamodb-mapper/decorator";
-import { ObjectMapper, StringMapper } from "../dynamodb-mapper/mapper";
+import { BaseModel } from "../src/base.model";
+import { Attr, HashKey, Model, RangeKey, Version } from "../src/decorators";
+import { StringMapper } from "../src/mappers/string.mapper";
 
 @Model({ tableName: `Users` })
 export class UserModel extends BaseModel {
@@ -15,17 +9,17 @@ export class UserModel extends BaseModel {
   userId: string;
 
   @RangeKey()
-  @Attr(StringMapper, { nullable: true })
+  @Attr(StringMapper(), { nullable: true })
   userName: string;
 
-  @Attr(StringMapper)
+  @Attr(StringMapper())
   lastLoginTime: Date;
 
-  @Attr(StringMapper)
+  @Attr(StringMapper())
   roles: Set<string>;
 
   @Version()
-  @Attr(StringMapper)
+  @Attr(StringMapper())
   version: number;
 
   constructor(obj: UserModel) {

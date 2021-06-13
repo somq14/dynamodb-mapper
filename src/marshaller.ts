@@ -1,5 +1,5 @@
 import { BaseModel } from "./base.model";
-import { DynamoDBItem } from "./client";
+import { DynamoDBItem } from "./common";
 import { AttributeMetadata, ModelMetadata } from "./metadata";
 
 export const marshaller = <T extends BaseModel>(
